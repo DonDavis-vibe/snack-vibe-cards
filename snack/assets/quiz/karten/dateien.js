@@ -100,6 +100,50 @@
     }
   },
   {
+    id: "dat-meme-json", thema: "dateien", typ: "bedeutung",
+    frage: {
+      de: "Ein Vibe Coder schreibt verzweifelt ins Forum: „Claude redet ständig von JSON. Wer ist JSON, und warum ist er in meinem Code?“ Was antwortest du?",
+      en: "A vibe coder posts in a panic: “Claude keeps talking about JSON. Who is JSON, and why is he in my code?” What do you reply?"
+    },
+    optionen: {
+      de: [
+        "Kein Er, sondern ein Textformat, in dem Programme Daten aufschreiben",
+        "Ein Praktikant von Claude, der nachts heimlich deinen Code schreibt",
+        "Jason aus „Freitag der 13.“, der jetzt in deinem Projektordner wohnt",
+        "Ein Virus, der sich als harmlose Datei mit der Endung .json tarnt"
+      ],
+      en: [
+        "Not a he: a text format that programs use to write down data",
+        "Claude's intern, who secretly writes your code at night",
+        "Jason from “Friday the 13th”, who now lives in your project folder",
+        "A virus disguised as a harmless file ending in .json"
+      ]
+    },
+    richtig: 0,
+    warum: {
+      1: {
+        de: "Claude hat keine Praktikanten. JSON schreibt auch nichts, es ist nur die Form, in der Daten aufgeschrieben werden.",
+        en: "Claude has no interns. JSON doesn't write anything either, it is just the shape data is written in."
+      },
+      2: {
+        de: "Der trägt eine Hockeymaske, keine geschweiften Klammern. Ausgesprochen wird JSON aber wirklich wie „Jason“.",
+        en: "He wears a hockey mask, not curly braces. JSON really is pronounced like “Jason”, though."
+      },
+      3: {
+        de: "Eine .json-Datei ist reiner Text. Sie führt nichts aus, du kannst sie in jedem Editor lesen.",
+        en: "A .json file is plain text. It doesn't run anything, and you can read it in any editor."
+      }
+    },
+    erklaerung: {
+      de: "JSON steht für JavaScript Object Notation und klingt ausgesprochen wie „Jason“, daher das Meme. Sich selbst würde JSON so beschreiben: `{ \"name\": \"JSON\", \"ist_ein_mensch\": false }`",
+      en: "JSON stands for JavaScript Object Notation and is pronounced like “Jason”, hence the meme. JSON would describe itself like this: `{ \"name\": \"JSON\", \"is_a_person\": false }`"
+    },
+    tipp: {
+      de: "Öffne eine .json-Datei in einem deiner Projekte. Jason ist nicht drin, versprochen.",
+      en: "Open a .json file in one of your projects. Jason isn't in there, promise."
+    }
+  },
+  {
     id: "dat-yaml", thema: "dateien", typ: "bedeutung",
     code: "name: Tests\non:\n  push:\n    branches: [main]",
     codeLabel: { de: "Datei", en: "File" },
