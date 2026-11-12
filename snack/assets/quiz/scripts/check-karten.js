@@ -135,5 +135,5 @@ function laengenTest(name, karten, l) {
 }
 SPRACHEN.forEach(l => laengenTest("Grundkarten, " + l, GRUND.filter(k => l === "de" || voll(k.frage)), l));
 laengenTest("eigene Karten", EIGENE, "de");
-console.log(fehler.length ? "FEHLER:\n" + fehler.join("\n") : "Alles ok.");
+console.log(fehler.length ? "FEHLER (errors):\n" + fehler.join("\n") : "Alles ok. (All good.)");
 process.exit(fehler.length ? 1 : 0);

@@ -32,7 +32,7 @@ Offer it when the user asks how to work better with Claude. Add it only after a 
 ```markdown
 ## How we work
 
-- For anything with 3 or more steps: write a plan first (checklist in `tasks/todo.md`) and check in before starting.
+- For anything with 3 or more steps: write a plan first (checklist in `tasks/todo.md`) and check in before starting. Short routines such as `/snack` are exempt.
 - Keep answers short and practical. One step at a time, at most three options with a recommendation.
 - Do not call something done without testing it. Say what you tested and what you did not.
 - When given a bug: find the cause and fix it without asking me how.
@@ -45,7 +45,7 @@ Offer it when the user asks how to work better with Claude. Add it only after a 
 ```markdown
 ## So arbeiten wir
 
-- Bei allem ab 3 Schritten: erst einen Plan schreiben (Checkliste in `tasks/todo.md`) und nachfragen, bevor es losgeht.
+- Bei allem ab 3 Schritten: erst einen Plan schreiben (Checkliste in `tasks/todo.md`) und nachfragen, bevor es losgeht. Kurze Routinen wie `/snack` sind ausgenommen.
 - Antworte kurz und praxisnah. Ein Schritt nach dem anderen, höchstens drei Optionen mit Empfehlung.
 - Melde nichts als fertig, ohne es zu testen. Sag, was du getestet hast und was nicht.
 - Bei einem Fehler: Ursache finden und beheben, ohne mich zu fragen, wie.

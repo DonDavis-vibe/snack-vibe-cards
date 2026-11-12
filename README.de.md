@@ -85,6 +85,8 @@ node snack/assets/quiz/scripts/sim.js snack/assets/quiz
 
 Der erste Befehl prüft das Format in beiden Sprachen. Der zweite spielt mit dem echten Auswahl-Code viele Runden durch und zeigt, wie abwechslungsreich sie sind.
 
+Die `id` einer veröffentlichten Karte nie ändern: Der Lernstand der Spieler hängt an ihr.
+
 ## Grenzen
 
 - Terminal-Karten gehen von einer Bash-ähnlichen Shell aus (Linux, macOS, WSL oder Git Bash unter Windows).

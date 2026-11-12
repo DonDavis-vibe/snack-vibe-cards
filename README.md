@@ -85,11 +85,12 @@ node snack/assets/quiz/scripts/sim.js snack/assets/quiz
 
 The first command checks the format in both languages. The second plays many rounds with the real selection code and prints how varied they are.
 
-Field names in the card files are German (`frage`, `optionen`, `erklaerung`), because that is where the project started.
+Field names in the card files are German (`frage`, `optionen`, `erklaerung`), because that is where the project started. Never change the `id` of a published card: players' progress is stored per id.
 
 ## Limits
 
 - Terminal cards assume a Bash-like shell (Linux, macOS, WSL or Git Bash on Windows).
+- File names, card fields and most script output are German. `Alles ok.` means the card check passed.
 - The mini round in chat does not change the progress in the browser quiz.
 - Moving or renaming your quiz folder resets progress, because the browser ties it to the folder.
 

@@ -33,7 +33,7 @@ Own cards live in `<quiz>/eigene-karten.js`, inside the array `window.SNACK_EIGE
 ```
 
 - `id`: project name, then a short name. Lowercase letters a to z, digits and hyphens only (write `ue` for `ü`). A letter for the form, as in `weather-app-l-start`, is optional. Ids must be unique in the whole quiz. Never change the id of an existing card, the user's progress hangs on it.
-- `thema`: `"projekte"` for project cards. Other topics are allowed if a card is general knowledge.
+- `thema`: `"projekte"` for every card that comes from a project scan or a mini round. Other topics are only for general-knowledge cards the user asks for outside a project.
 - `projekt`: the project name. The quiz shows it as a label, and the next scan uses it to see what exists. If two projects share a name, add something to tell them apart.
 - Marker line: name, full path of the project folder, date of the scan, short commit hash (7 characters). Update date and commit after each scan. Leave out `· Commit …` if the project has no Git. The path is fine here: the file is the user's own and is never shared.
 - Every card ends with `},`. Keep the closing `];` at the end of the file.
@@ -57,6 +57,22 @@ The examples below show the format. Do not copy them: write cards about what is 
 A text is a plain string in the user's language. The starter cards use pairs `{ de: "…", en: "…" }` instead, own cards do not need that.
 
 ## 4. The card forms
+
+When you list card ideas for the user, name the form the way the quiz shows it:
+
+| `form` (and `typ`) | English | Deutsch |
+|---|---|---|
+| `wahl` / `bedeutung` | What does it mean? | Was bedeutet das? |
+| `wahl` / `fehler` | Decode the error | Fehler übersetzen |
+| `wahl` / `erlauben` | Allow it? | Erlauben? |
+| `wahl` / `upgrade` | Prompt upgrade | Prompt-Upgrade |
+| `luecke` | Fill the gap | Lücke füllen |
+| `mehrfach` | Select all | Mehrere richtig |
+| `reihenfolge` | Put in order | Reihenfolge |
+| `zeile` | Spot the line | Fehlerzeile finden |
+| `paare` | Match pairs | Paare zuordnen |
+
+`warum` (a one-line reason per wrong option, keyed by its index) works for `wahl`, `luecke` and `mehrfach`.
 
 ### `wahl`: pick one answer
 Needs `typ`, `optionen` (2 to 4), `richtig` (index from 0). Optional `auchOk: [indexes]` for answers that also count, and `warum: { index: "why this one does not fit" }`.
@@ -156,9 +172,11 @@ Needs `typ`, `optionen` (2 to 4), `richtig` (index from 0). Optional `auchOk: [i
 node <quiz>/scripts/check-karten.js <quiz>
 ```
 
-It must end with `Alles ok.` It also prints how often the right answer is the longest option, once for all cards and once for the user's own cards. Above about 40 % players can guess by length, so shorten right answers or flesh out wrong ones.
+It must end with `Alles ok.` (errors are listed under `FEHLER`). It also prints how often the right answer is the longest option: for the starter cards in each language, and for the user's own pick-one cards. From five own pick-one cards on, a share above about 40 % prints a `WARNUNG`, because players can then guess by length. Shorten right answers or flesh out wrong ones until it is gone.
 
-To look at new cards without touching the user's progress: open the quiz, then add `?karten=id1,id2` to the end of the address in the browser and press Enter. Add `:wf` to an id to see a classic card as "true or false". On the command line the address needs the `file://` form in quotes, for example `xdg-open "file:///home/alex/snack-quiz/index.html?karten=id1,id2"`.
+To look at new cards without touching the user's progress, tell the user: open the quiz, then add `?karten=id1,id2` to the end of the address in the browser and press Enter. Add `:wf` to an id to see a classic card as "true or false". If you open it yourself from the command line, the address needs the `file://` form in quotes, for example `xdg-open "file:///home/alex/snack-quiz/index.html?karten=id1,id2"`.
+
+For maintainers of the starter cards: never change the id of a published card, and never reuse an id. Users' progress is stored per id.
 
 ## 6. Mistakes that happen a lot
 
