@@ -17,6 +17,15 @@ fs.mkdirSync(ziel, { recursive: true });
 APP.forEach(n => fs.cpSync(path.join(quelle, n), path.join(ziel, n), { recursive: true, force: true }));
 const neu = [];
 EIGENE.forEach(n => { if (!fs.existsSync(path.join(ziel, n))) { fs.copyFileSync(path.join(quelle, n), path.join(ziel, n)); neu.push(n); } });
+// Übliche Rechte setzen (Ordner 755, Dateien 644), egal wie die Quelle sie hatte. Wo das nicht geht, einfach weiter.
+const rechte = p => {
+  try {
+    const st = fs.statSync(p);
+    fs.chmodSync(p, st.isDirectory() ? 0o755 : 0o644);
+    if (st.isDirectory()) fs.readdirSync(p).forEach(n => rechte(path.join(p, n)));
+  } catch (e) { /* z. B. auf Laufwerken ohne Rechte */ }
+};
+APP.concat(neu).forEach(n => rechte(path.join(ziel, n)));
 
 console.log(vorher ? "Aktualisiert: " + vorher + " → " + version(ziel) : "Eingerichtet: Version " + version(ziel));
 console.log("Ordner: " + ziel);

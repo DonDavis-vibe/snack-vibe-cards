@@ -125,12 +125,15 @@ console.log("Grundkarten:", GRUND.length, "| eigene:", EIGENE.length, "| Begriff
 console.log("Themen:", JSON.stringify(zaehl(GRUND, k => k.thema)));
 console.log("Kartenarten:", JSON.stringify(zaehl(GRUND.concat(EIGENE), k => k.form || "wahl")));
 console.log("Grundkarten nur in einer Sprache:", einsprachig.length, STRENG ? "" : "(mit --zweisprachig wird das ein Fehler)");
-SPRACHEN.forEach(l => {
-  const basis = GRUND.concat(EIGENE).filter(k => (k.form || "wahl") === "wahl" && k.typ !== "erlauben" && (l === "de" || voll(k.frage)));
+// Wie oft ist die richtige Antwort die längste? Einmal für die Grundkarten je Sprache, einmal für die eigenen Karten.
+function laengenTest(name, karten, l) {
+  const basis = karten.filter(k => (k.form || "wahl") === "wahl" && k.typ !== "erlauben");
   const laengste = basis.filter(k => { const n = liste(k.optionen, l).map(x => String(x).length), r = n[k.richtig]; return n.every((x, i) => i === k.richtig || x < r); }).length;
   if (!basis.length) return;
-  console.log("Richtige Antwort ist die längste (" + l + "):", laengste, "von", basis.length, "(Ziel: höchstens ca. 40 %, sonst kann man nach Länge raten)");
-  if (laengste / basis.length > 0.4) console.log("WARNUNG (" + l + "): Zu oft ist die richtige Antwort die längste. Falsche Antworten ähnlich lang und glaubwürdig machen.");
-});
+  console.log("Richtige Antwort ist die längste (" + name + "):", laengste, "von", basis.length, "(Ziel: höchstens ca. 40 %, sonst kann man nach Länge raten)");
+  if (basis.length >= 5 && laengste / basis.length > 0.4) console.log("WARNUNG (" + name + "): Zu oft ist die richtige Antwort die längste. Falsche Antworten ähnlich lang und glaubwürdig machen.");
+}
+SPRACHEN.forEach(l => laengenTest("Grundkarten, " + l, GRUND.filter(k => l === "de" || voll(k.frage)), l));
+laengenTest("eigene Karten", EIGENE, "de");
 console.log(fehler.length ? "FEHLER:\n" + fehler.join("\n") : "Alles ok.");
 process.exit(fehler.length ? 1 : 0);

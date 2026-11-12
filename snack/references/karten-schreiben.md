@@ -32,11 +32,13 @@ Own cards live in `<quiz>/eigene-karten.js`, inside the array `window.SNACK_EIGE
   },
 ```
 
-- `id`: project name in lowercase with hyphens, then a short name. Ids must be unique in the whole quiz. Never change the id of an existing card, the user's progress hangs on it.
+- `id`: project name, then a short name. Lowercase letters a to z, digits and hyphens only (write `ue` for `ü`). A letter for the form, as in `weather-app-l-start`, is optional. Ids must be unique in the whole quiz. Never change the id of an existing card, the user's progress hangs on it.
 - `thema`: `"projekte"` for project cards. Other topics are allowed if a card is general knowledge.
-- `projekt`: the project name. The quiz shows it as a label, and the next scan uses it to see what exists.
-- Update the date and commit in the marker line after each scan. Leave out `· Commit …` if the project has no Git.
+- `projekt`: the project name. The quiz shows it as a label, and the next scan uses it to see what exists. If two projects share a name, add something to tell them apart.
+- Marker line: name, full path of the project folder, date of the scan, short commit hash (7 characters). Update date and commit after each scan. Leave out `· Commit …` if the project has no Git. The path is fine here: the file is the user's own and is never shared.
 - Every card ends with `},`. Keep the closing `];` at the end of the file.
+
+The examples below show the format. Do not copy them: write cards about what is really in the user's project.
 
 ## 3. Common fields
 
@@ -154,9 +156,9 @@ Needs `typ`, `optionen` (2 to 4), `richtig` (index from 0). Optional `auchOk: [i
 node <quiz>/scripts/check-karten.js <quiz>
 ```
 
-It must end with `Alles ok.` It also warns when the right answer is the longest option in more than about 40 % of the cards.
+It must end with `Alles ok.` It also prints how often the right answer is the longest option, once for all cards and once for the user's own cards. Above about 40 % players can guess by length, so shorten right answers or flesh out wrong ones.
 
-To look at new cards without touching the user's progress, open `index.html?karten=id1,id2`. Add `:wf` to an id to see a classic card as "true or false".
+To look at new cards without touching the user's progress: open the quiz, then add `?karten=id1,id2` to the end of the address in the browser and press Enter. Add `:wf` to an id to see a classic card as "true or false". On the command line the address needs the `file://` form in quotes, for example `xdg-open "file:///home/alex/snack-quiz/index.html?karten=id1,id2"`.
 
 ## 6. Mistakes that happen a lot
 

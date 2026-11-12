@@ -1,6 +1,6 @@
 # Workflow and working style
 
-Habits that keep a beginner's project on track. They are defaults: the user's own instructions always win. Apply them while the skill is loaded. If the user wants them in every session, offer the snippet at the end of this file for their CLAUDE.md.
+Habits that keep a beginner's project on track. They are defaults: the user's own instructions always win. Apply them to the user's own tasks while the skill is loaded. They are not meant for the `/snack` steps themselves: setting up the quiz or scanning a project needs no plan file. If the user wants the habits in every session, offer the snippet at the end of this file for their CLAUDE.md.
 
 ## Working with the user
 
@@ -25,7 +25,7 @@ Habits that keep a beginner's project on track. They are defaults: the user's ow
 
 ## Snippet for CLAUDE.md
 
-Offer it once during setup. Add it only after a clear yes.
+Offer it when the user asks how to work better with Claude. Add it only after a clear yes.
 
 ### English
 

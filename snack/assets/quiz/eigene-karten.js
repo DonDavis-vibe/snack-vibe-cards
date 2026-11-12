@@ -26,7 +26,7 @@
 //   "mehrfach"     optionen: 3 to 5 answers, richtige: [indexes of ALL correct ones]
 //   "reihenfolge"  schritte: 3 to 5 steps in the CORRECT order (the quiz shuffles them)
 //   "zeile"        code with several lines, zeile: index of the faulty line (0 = first line)
-//   "paare"        paare: [["left", "right"], …] with 4 pairs
+//   "paare"        paare: [["left", "right"], …] with 3 to 5 pairs, usually 4
 //
 // Every text is either a plain string or a pair { de: "…", en: "…" }.
 // optionen and schritte may also be { de: [...], en: [...] }. Own cards only need your own language.

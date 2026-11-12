@@ -4,7 +4,7 @@ The idea: the user learns vocabulary while building, without stopping to study. 
 
 ## The standing rule for CLAUDE.md
 
-Offer this snippet during the first run. Replace `<QUIZ>` with the real, absolute quiz folder. Add it to `~/.claude/CLAUDE.md` only after the user says yes. Use the version in the user's language.
+Offer this snippet during the first run. Replace `<QUIZ>` with the real, absolute quiz folder. Add it to the end of `~/.claude/CLAUDE.md` only after the user says yes (create the file if it is missing). Use the version in the user's language. If the file already has a Snack or "Lernen nebenbei" rule, do not add a second one.
 
 ### English
 
@@ -38,7 +38,7 @@ The path in this rule is also how the skill finds the quiz later, from any proje
 |---|---|
 | `wort` | The term the way it came up. Add the short form in brackets if both are used: `"Repository (Repo)"`. |
 | `erklaerung` | Everyday words, about 15 words at most, no further jargon. In the user's language. A picture helps: door, drawer, phone book. |
-| `prompt` | Optional. One example sentence that uses the term the way the user could say it to Claude. |
+| `prompt` | Optional. One example sentence that uses the term the way the user could say it to Claude. Plain sentence, no surrounding quotes (the quiz adds them). |
 | `datum` | The day it came up, `YYYY-MM-DD`. |
 
 Rules:
@@ -47,7 +47,9 @@ Rules:
 - Add the line directly above the closing `];`. Every line ends with a comma.
 - Escape double quotes inside a text as `\"`, or use the typographic ones („…“ or “…”).
 - Do not add terms the user clearly knows already, and do not add project-specific names (those belong on project cards).
+- Do not add a term that a starter card already teaches. Search `<QUIZ>/karten/` for the word first.
 - Three new terms per answer is plenty. More than that and nobody reads the brackets.
+- The line "New in the quiz: …" goes at the very end of the message, after any question to the user.
 
 ## What the quiz does with the terms
 
