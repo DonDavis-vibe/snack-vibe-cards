@@ -1,0 +1,6 @@
+# Private notes, plans and one-off tools of the maintainer
+tasks/
+
+node_modules/
+.DS_Store
+*.log
