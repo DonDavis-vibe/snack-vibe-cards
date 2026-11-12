@@ -525,5 +525,74 @@
       de: "Die Endung sagt, wie eine Datei aufgebaut ist und welches Programm sie versteht.",
       en: "The extension tells how a file is structured and which program understands it."
     }
+  },
+  {
+    id: "dat-l-env-zeile", thema: "dateien", form: "luecke",
+    code: { de: "API_KEY___dein-schluessel-hier", en: "API_KEY___your-key-here" },
+    codeLabel: ".env",
+    frage: {
+      de: "In der `.env` steht pro Zeile eine Einstellung: links der Name, rechts der Wert. Welches Zeichen gehört dazwischen?",
+      en: "In `.env`, each line holds one setting: the name on the left, the value on the right. Which character goes in between?"
+    },
+    optionen: ["=", ":", "==", "=>"],
+    richtig: 0,
+    warum: {
+      1: {
+        de: "Den Doppelpunkt nehmen JSON und YAML. Die `.env` hat ihre eigene Schreibweise.",
+        en: "The colon is what JSON and YAML use. `.env` has its own notation."
+      },
+      2: {
+        de: "`==` vergleicht im Code zwei Werte. Hier wird nichts verglichen.",
+        en: "`==` compares two values in code. Nothing is compared here."
+      },
+      3: {
+        de: "`=>` ist der Pfeil einer Kurz-Funktion in JavaScript.",
+        en: "`=>` is the arrow of a short function in JavaScript."
+      }
+    },
+    erklaerung: {
+      de: "Die Schreibweise ist `NAME=wert`, am besten ohne Leerzeichen um das `=`. Dein Code findet den Wert später unter genau diesem Namen.",
+      en: "The notation is `NAME=value`, ideally with no spaces around the `=`. Your code later finds the value under exactly this name."
+    },
+    prompt: {
+      de: "„Leg eine .env mit dem Eintrag API_KEY an. Den Wert trage ich selbst ein.“",
+      en: "“Create a .env with an API_KEY entry. I will fill in the value myself.”"
+    }
+  },
+  {
+    id: "dat-r-pfad", thema: "dateien", form: "reihenfolge",
+    frage: {
+      de: "`logo.png` liegt in `bilder`, `bilder` liegt in `quiz`, und `quiz` liegt in deinem Home-Ordner. Setz den Pfad von außen nach innen zusammen.",
+      en: "`logo.png` is in `images`, `images` is in `quiz`, and `quiz` is in your home folder. Build the path from the outside in."
+    },
+    schritte: { de: ["`~/`", "`quiz/`", "`bilder/`", "`logo.png`"], en: ["`~/`", "`quiz/`", "`images/`", "`logo.png`"] },
+    erklaerung: {
+      de: "Ein Pfad liest sich wie eine Wegbeschreibung: erst der äußerste Ordner, dann immer tiefer, ganz am Ende die Datei. Zusammen ergibt das `~/quiz/bilder/logo.png`.",
+      en: "A path reads like directions: the outermost folder first, then deeper and deeper, the file at the very end. Together that makes `~/quiz/images/logo.png`."
+    },
+    prompt: {
+      de: "„Das Logo liegt unter ~/quiz/bilder/logo.png. Bau es oben links in die Navbar ein.“",
+      en: "“The logo is at ~/quiz/images/logo.png. Put it in the top left of the navbar.”"
+    }
+  },
+  {
+    id: "dat-m-reiner-text", thema: "dateien", form: "mehrfach",
+    frage: {
+      de: "Welche dieser Dateien sind reiner Text, den du in jedem Texteditor lesen kannst?",
+      en: "Which of these files are plain text that you can read in any text editor?"
+    },
+    optionen: {
+      de: ["`notizen.md`", "`daten.json`", "`brief.docx`", "`tabelle.csv`", "`logo.png`"],
+      en: ["`notes.md`", "`data.json`", "`letter.docx`", "`table.csv`", "`logo.png`"]
+    },
+    richtige: [0, 1, 3],
+    erklaerung: {
+      de: "Markdown, JSON und CSV bestehen nur aus Zeichen, darum kann Claude sie direkt bearbeiten und Git zeigt Änderungen Zeile für Zeile. Eine Word-Datei enthält zwar Text, ist aber verpackt wie ein ZIP und im Texteditor nur Zeichensalat.",
+      en: "Markdown, JSON and CSV consist of characters only, so Claude can edit them directly and Git shows changes line by line. A Word file does contain text, but it is packed like a ZIP and looks like gibberish in a text editor."
+    },
+    prompt: {
+      de: "„Schreib die Notizen als Markdown-Datei, nicht als Word-Dokument.“",
+      en: "“Write the notes as a Markdown file, not as a Word document.”"
+    }
   }
 );

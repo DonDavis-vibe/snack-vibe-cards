@@ -499,5 +499,115 @@
       de: "„Geh in den Plan-Modus und zeig mir erst, was du ändern willst.“",
       en: "“Switch to plan mode and show me first what you want to change.”"
     }
+  },
+  {
+    id: "cc-l-compact", thema: "claude", form: "luecke",
+    code: "/___",
+    codeLabel: "Claude Code",
+    frage: {
+      de: "Das Gespräch ist sehr lang geworden, du willst aber am selben Thema weiterarbeiten. Welcher Befehl schafft Platz?",
+      en: "The conversation has become very long, but you want to keep working on the same topic. Which command frees up space?"
+    },
+    optionen: ["compact", "clear", "init", "help"],
+    richtig: 0,
+    warum: {
+      1: {
+        de: "`/clear` leert das Gespräch ganz. Claude wüsste dann nichts mehr von deiner Aufgabe.",
+        en: "`/clear` wipes the whole conversation. Claude would no longer know anything about your task."
+      },
+      2: {
+        de: "`/init` legt eine CLAUDE.md fürs Projekt an. Platz schafft das nicht.",
+        en: "`/init` creates a CLAUDE.md for the project. It does not free up space."
+      },
+      3: { de: "`/help` zeigt nur die Hilfe an.", en: "`/help` only shows the help." }
+    },
+    erklaerung: {
+      de: "Faustregel: gleiches Thema, aber zu langes Gespräch: `/compact`. Ganz neues Thema: `/clear`.",
+      en: "Rule of thumb: same topic but the conversation is too long: `/compact`. Brand-new topic: `/clear`."
+    }
+  },
+  {
+    id: "cc-m-kontext-fuellt", thema: "claude", form: "mehrfach",
+    frage: {
+      de: "Was davon belegt Platz im Kontextfenster der laufenden Session?",
+      en: "Which of these take up space in the context window of the current session?"
+    },
+    optionen: {
+      de: [
+        "Deine Nachrichten und Claudes Antworten",
+        "Projektdateien, die Claude nie öffnet",
+        "Dateien, die Claude liest",
+        "Lange Ausgaben von Terminal-Befehlen",
+        "Abgeschlossene Sessions von letzter Woche"
+      ],
+      en: [
+        "Your messages and Claude's answers",
+        "Project files Claude never opens",
+        "Files that Claude reads",
+        "Long output from terminal commands",
+        "Finished sessions from last week"
+      ]
+    },
+    richtige: [0, 2, 3],
+    erklaerung: {
+      de: "Alles, was Claude in dieser Session liest oder schreibt, zählt mit. Ungeöffnete Dateien kosten nichts, darum liest Claude am besten nur, was die Aufgabe braucht.",
+      en: "Everything Claude reads or writes in this session counts. Unopened files cost nothing, so it is best if Claude reads only what the task needs."
+    },
+    prompt: {
+      de: "„Lies nicht die ganze Logdatei. Such darin nur nach den Zeilen mit Error.“",
+      en: "“Do not read the whole log file. Only search it for the lines with Error.”"
+    }
+  },
+  {
+    id: "cc-z-bash-stern", thema: "claude", form: "zeile",
+    code: "\"allow\": [\n  \"Bash(git status)\",\n  \"Bash(git diff)\",\n  \"Bash(*)\",\n  \"Bash(npm test)\"\n]",
+    codeLabel: "settings.json",
+    frage: {
+      de: "Seit diese Liste gilt, fragt Claude vor keinem Terminal-Befehl mehr nach. Welche Zeile ist schuld?",
+      en: "Since this list took effect, Claude no longer asks before any terminal command. Which line is to blame?"
+    },
+    zeile: 3,
+    erklaerung: {
+      de: "Das Sternchen steht für „alles“. Damit liefe auch `rm -rf` ohne Rückfrage. Die anderen Einträge erlauben je genau einen harmlosen Befehl.",
+      en: "The asterisk stands for “everything”. Even `rm -rf` would run without asking. The other entries each allow exactly one harmless command."
+    },
+    prompt: {
+      de: "„Nimm den Eintrag mit dem Sternchen aus den erlaubten Befehlen. Erlaube nur einzelne, harmlose Befehle.“",
+      en: "“Remove the entry with the asterisk from the allowed commands. Allow only single, harmless commands.”"
+    }
+  },
+  {
+    id: "cc-p-eingaben", thema: "claude", form: "paare",
+    frage: {
+      de: "Kleine Eingabe, große Wirkung: Was gehört in Claude Code zusammen?",
+      en: "Small input, big effect: what goes together in Claude Code?"
+    },
+    paare: [
+      ["/", { de: "öffnet die Liste der Befehle", en: "opens the list of commands" }],
+      ["@", { de: "hängt eine Datei an", en: "attaches a file" }],
+      ["Esc", { de: "unterbricht Claude sofort", en: "interrupts Claude right away" }],
+      ["/init", { de: "legt eine CLAUDE.md an", en: "creates a CLAUDE.md" }]
+    ],
+    erklaerung: {
+      de: "`/` und `@` tippst du ins Eingabefeld, und Claude Code zeigt sofort Vorschläge. So musst du dir weder alle Befehle noch alle Dateinamen merken.",
+      en: "You type `/` and `@` into the input box, and Claude Code shows suggestions right away. So you need to memorize neither every command nor every file name."
+    }
+  },
+  {
+    id: "cc-p-dateien", thema: "claude", form: "paare",
+    frage: {
+      de: "Diese Dateien liegen oft in einem Projekt mit Claude Code. Welche ist wofür da?",
+      en: "These files often sit in a project with Claude Code. What is each one for?"
+    },
+    paare: [
+      ["CLAUDE.md", { de: "Regeln, die Claude jedes Mal liest", en: "rules Claude reads every session" }],
+      ["settings.json", { de: "erlaubte und gesperrte Befehle", en: "allowed and blocked commands" }],
+      ["README.md", { de: "Projektbeschreibung für Menschen", en: "project description for people" }],
+      [".gitignore", { de: "was Git nicht speichern soll", en: "what Git should not save" }]
+    ],
+    erklaerung: {
+      de: "Die CLAUDE.md liest Claude, die README lesen Menschen. Die `settings.json` liegt im Ordner `.claude` und enthält die Regeln, was Claude ohne Nachfrage darf.",
+      en: "Claude reads CLAUDE.md, people read the README. `settings.json` lives in the `.claude` folder and holds the rules for what Claude may do without asking."
+    }
   }
 );

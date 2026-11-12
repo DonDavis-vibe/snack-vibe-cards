@@ -491,5 +491,97 @@
       de: "„ReferenceError: pukte is not defined. Such nach Tippfehlern in den Variablennamen.“",
       en: "“ReferenceError: pints is not defined. Look for typos in the variable names.”"
     }
+  },
+  {
+    id: "err-m-ort", thema: "fehler", form: "mehrfach",
+    code: {
+      de: "TypeError: preis.toFixed is not a function\n    at zeigePreis (app.js:42:7)",
+      en: "TypeError: price.toFixed is not a function\n    at showPrice (app.js:42:7)"
+    },
+    codeLabel: { de: "Browser-Konsole", en: "Browser console" },
+    frage: {
+      de: "Was verrät dir das `app.js:42:7` am Ende dieser Meldung?",
+      en: "What does the `app.js:42:7` at the end of this message tell you?"
+    },
+    optionen: {
+      de: [
+        "Der Fehler trat in der Datei `app.js` auf",
+        "Die Stelle liegt in Zeile 42",
+        "In dieser Zeile etwa beim 7. Zeichen",
+        "Die Datei enthält 42 Fehler",
+        "Der Fehler kam 7-mal vor"
+      ],
+      en: [
+        "The error happened in the file `app.js`",
+        "The spot is on line 42",
+        "Around the 7th character of that line",
+        "The file contains 42 errors",
+        "The error occurred 7 times"
+      ]
+    },
+    richtige: [0, 1, 2],
+    erklaerung: {
+      de: "Das Muster heißt Datei:Zeile:Spalte. Mit dieser Angabe findet Claude die Stelle sofort, also schick sie immer mit.",
+      en: "The pattern is file:line:column. With it, Claude finds the spot right away, so always pass it along."
+    },
+    prompt: {
+      de: "„Der Fehler steht in app.js:42:7. Erklär mir, was an dieser Stelle schiefgeht.“",
+      en: "“The error is at app.js:42:7. Explain to me what goes wrong at that spot.”"
+    }
+  },
+  {
+    id: "err-z-eigene-datei", thema: "fehler", form: "zeile",
+    code: {
+      de: "SyntaxError: Unexpected end of JSON input\n    at JSON.parse (<anonymous>)\n    at ladeStand (src/speicher.js:12:22)\n    at listOnTimeout (node:internal/timers:585:17)",
+      en: "SyntaxError: Unexpected end of JSON input\n    at JSON.parse (<anonymous>)\n    at loadState (src/storage.js:12:22)\n    at listOnTimeout (node:internal/timers:585:17)"
+    },
+    codeLabel: "Terminal",
+    frage: {
+      de: "Ein Stack Trace aus dem Terminal. Welche Zeile zeigt auf eine Stelle in deinem eigenen Code?",
+      en: "A stack trace from the terminal. Which line points to a spot in your own code?"
+    },
+    zeile: 2,
+    erklaerung: {
+      de: "Die oberste Zeile sagt, was schiefging, die erste Zeile mit einer Datei aus deinem Projekt sagt, wo. Zeilen mit `<anonymous>` oder `node:internal` gehören zum Unterbau von Node.",
+      en: "The top line says what went wrong, the first line with a file from your project says where. Lines with `<anonymous>` or `node:internal` belong to the inner workings of Node."
+    },
+    prompt: {
+      de: "„Der Fehler kommt aus src/speicher.js, Zeile 12. Was wird dort an JSON.parse übergeben?“",
+      en: "“The error comes from src/storage.js, line 12. What gets passed to JSON.parse there?”"
+    }
+  },
+  {
+    id: "err-z-python-doppelpunkt", thema: "fehler", form: "zeile",
+    code: {
+      de: "preis = 20\nif preis > 10\n    print(\"teuer\")",
+      en: "price = 20\nif price > 10\n    print(\"expensive\")"
+    },
+    codeLabel: "Python",
+    frage: {
+      de: "Python meldet `SyntaxError: expected ':'`. In welcher Zeile fehlt das Zeichen?",
+      en: "Python reports `SyntaxError: expected ':'`. Which line is missing the character?"
+    },
+    zeile: 1,
+    erklaerung: {
+      de: "Hinter `if preis > 10` fehlt der Doppelpunkt. Python nennt hier wörtlich das Zeichen, das es erwartet hat, also lohnt es sich, die Meldung genau zu lesen.",
+      en: "The colon after `if price > 10` is missing. Python names the very character it expected, so reading the message closely pays off."
+    }
+  },
+  {
+    id: "err-p-klartext", thema: "fehler", form: "paare",
+    frage: { de: "Was steckt hinter diesen Fehlermeldungen?", en: "What is behind these error messages?" },
+    paare: [
+      ["401 Unauthorized", { de: "Anmeldung fehlt oder ist ungültig", en: "login is missing or invalid" }],
+      ["not a git repository", { de: "dieser Ordner ist kein Repo", en: "this folder is not a repo" }],
+      [
+        "IndentationError",
+        { de: "Leerzeichen am Zeilenanfang stimmen nicht", en: "wrong spaces at the line start" }
+      ],
+      ["ETIMEDOUT", { de: "Antwort kam nicht rechtzeitig", en: "no answer arrived in time" }]
+    ],
+    erklaerung: {
+      de: "Solche Meldungen nennen meist schon die Richtung: API-Schlüssel prüfen, Ordner wechseln, Einrückung korrigieren. Bei `ETIMEDOUT` hilft oft ein zweiter Versuch.",
+      en: "Messages like these usually point the way already: check the API key, change the folder, fix the indentation. With `ETIMEDOUT`, a second try often helps."
+    }
   }
 );

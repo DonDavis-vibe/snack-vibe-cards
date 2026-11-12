@@ -518,5 +518,35 @@
       de: "Die erste Ziffer verrät die Richtung: 2 heißt geklappt, 4 heißt Fehler in der Anfrage, 5 heißt Fehler beim Server.",
       en: "The first digit tells the direction: 2 means it worked, 4 means the request was wrong, 5 means the server failed."
     }
+  },
+  {
+    id: "web-l-img-src", thema: "web", form: "luecke",
+    code: "<img ___=\"logo.png\" alt=\"Logo\">",
+    codeLabel: "HTML",
+    frage: {
+      de: "Die Seite soll das Bild `logo.png` anzeigen. Welches Attribut fehlt?",
+      en: "The page should show the image `logo.png`. Which attribute is missing?"
+    },
+    optionen: ["src", "href", "link", "url"],
+    richtig: 0,
+    warum: {
+      1: {
+        de: "`href` nennt das Ziel eines Links, z. B. in `<a href=\"…\">`.",
+        en: "`href` names the target of a link, as in `<a href=\"…\">`."
+      },
+      2: {
+        de: "`link` ist ein eigener Tag, der z. B. eine CSS-Datei einbindet.",
+        en: "`link` is a tag of its own, used for example to include a CSS file."
+      },
+      3: { de: "Bei Bildern kennt HTML kein Attribut `url`.", en: "HTML has no `url` attribute for images." }
+    },
+    erklaerung: {
+      de: "`src` steht für „source“, also die Quelle. Der `alt`-Text erscheint, wenn das Bild nicht lädt, und Screenreader lesen ihn vor.",
+      en: "`src` stands for “source”. The `alt` text shows up when the image fails to load, and screen readers read it aloud."
+    },
+    prompt: {
+      de: "„Das Logo wird nicht angezeigt. Prüf, ob der Pfad im src-Attribut stimmt.“",
+      en: "“The logo does not show up. Check whether the path in the src attribute is right.”"
+    }
   }
 );

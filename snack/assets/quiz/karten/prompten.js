@@ -521,5 +521,152 @@
       de: "Formel: „Ich habe [Schritt] gemacht. Erwartet: [Ergebnis]. Stattdessen: [Fehlertext].“",
       en: "Formula: “I did [step]. Expected: [result]. Instead: [error text].”"
     }
+  },
+  {
+    id: "pr-l-beispiel", thema: "prompten", form: "luecke",
+    code: {
+      de: "Zeig das Datum nicht als 2026-11-08, sondern ___.",
+      en: "Do not show the date as 2026-11-08, show it ___."
+    },
+    codeLabel: "Prompt",
+    frage: {
+      de: "Claude soll nicht raten müssen, wie das Datum aussehen soll. Welches Stück macht den Prompt eindeutig?",
+      en: "Claude should not have to guess what the date should look like. Which piece makes the prompt unambiguous?"
+    },
+    optionen: {
+      de: ["als 8. November 2026", "etwas schöner", "wie üblich", "gut lesbar"],
+      en: ["as November 8, 2026", "a bit nicer", "the usual way", "in a readable way"]
+    },
+    richtig: 0,
+    warum: {
+      1: {
+        de: "„Schöner“ ist Geschmack. Claude muss raten, was du schön findest.",
+        en: "“Nicer” is a matter of taste. Claude has to guess what you like."
+      },
+      2: {
+        de: "Üblich ist überall anders: 08.11.2026 oder 11/08/2026?",
+        en: "Usual differs by country: 11/08/2026 or 08.11.2026?"
+      },
+      3: { de: "Lesbar für wen? Auch 08.11.26 ist lesbar.", en: "Readable for whom? 11/8/26 is readable too." }
+    },
+    erklaerung: {
+      de: "Ein Beispiel sagt mehr als ein Adjektiv. Aus „8. November 2026“ liest Claude das Muster ab und wendet es auf jedes Datum an.",
+      en: "An example says more than an adjective. From “November 8, 2026” Claude reads the pattern and applies it to every date."
+    },
+    prompt: {
+      de: "Formel: „Zeig [Wert] nicht als [jetzt], sondern als [Beispiel].“",
+      en: "Formula: “Do not show [value] as [now], show it as [example].”"
+    }
+  },
+  {
+    id: "pr-r-nachstellen", thema: "prompten", form: "reihenfolge",
+    frage: {
+      de: "Claude soll deinen Fehler nachstellen können. In welcher Reihenfolge schreibst du die Sätze in den Prompt?",
+      en: "Claude should be able to reproduce your bug. In which order do you write the sentences into the prompt?"
+    },
+    schritte: {
+      de: [
+        "Ich öffne die Seite „Profil“",
+        "Ich ändere meinen Namen",
+        "Ich klicke auf „Speichern“",
+        "Statt „Gespeichert“ erscheint nichts"
+      ],
+      en: ["I open the “Profile” page", "I change my name", "I click “Save”", "Instead of “Saved”, nothing appears"]
+    },
+    erklaerung: {
+      de: "Schreib die Schritte so auf, wie du sie getan hast, und zuletzt, was statt des Erwarteten passiert ist. So kann Claude den Fehler Schritt für Schritt nachstellen.",
+      en: "Write the steps down the way you did them, and last what happened instead of what you expected. That lets Claude reproduce the bug step by step."
+    },
+    prompt: {
+      de: "Formel: „1. [Schritt]. 2. [Schritt]. 3. [Schritt]. Erwartet: [Soll]. Stattdessen: [Ist].“",
+      en: "Formula: “1. [step]. 2. [step]. 3. [step]. Expected: [target]. Instead: [actual].”"
+    }
+  },
+  {
+    id: "pr-r-ort", thema: "prompten", form: "reihenfolge",
+    frage: {
+      de: "Claude soll eine Stelle in deiner App sofort finden. Du baust den Prompt wie eine Wegbeschreibung, vom Großen zum Kleinen. In welcher Reihenfolge?",
+      en: "Claude should find a spot in your app right away. You build the prompt like directions, from big to small. In which order?"
+    },
+    schritte: {
+      de: [
+        "Seite: „Einstellungen“",
+        "Abschnitt: „Konto“",
+        "Element: Überschrift „Profil bearbeiten“",
+        "Änderung: soll „Dein Profil“ heißen"
+      ],
+      en: [
+        "Page: “Settings”",
+        "Section: “Account”",
+        "Element: heading “Edit profile”",
+        "Change: should say “Your profile”"
+      ]
+    },
+    erklaerung: {
+      de: "Wie bei einer Adresse: Stadt, Straße, Hausnummer. Der sichtbare Text in Anführungszeichen ist dabei Gold wert, denn danach kann Claude im Code suchen.",
+      en: "Like an address: city, street, house number. The visible text in quotes is worth gold, because Claude can search the code for it."
+    },
+    prompt: {
+      de: "Formel: „Auf [Seite], im Bereich [Abschnitt]: [Element mit Text] soll [Änderung].“",
+      en: "Formula: “On [page], in the [section] area: [element with text] should [change].”"
+    }
+  },
+  {
+    id: "pr-m-erklaerung", thema: "prompten", form: "mehrfach",
+    frage: {
+      de: "Du hast Claudes Erklärung nicht verstanden: zu lang, zu technisch. Welche Zusätze im nächsten Prompt helfen?",
+      en: "You did not understand Claude's explanation: too long, too technical. Which additions to your next prompt help?"
+    },
+    optionen: {
+      de: [
+        "Ohne Fachbegriffe",
+        "Mit allen Details",
+        "In höchstens fünf Sätzen",
+        "Mit einem Beispiel aus dem Alltag",
+        "Noch einmal ganz genau"
+      ],
+      en: [
+        "Without jargon",
+        "With all the details",
+        "In five sentences at most",
+        "With an everyday example",
+        "Once more, very precisely"
+      ]
+    },
+    richtige: [0, 2, 3],
+    erklaerung: {
+      de: "Sag, wie die Antwort aussehen soll: Länge, Niveau, Beispiel. „Noch einmal“ bringt meist dieselbe Art Antwort, nur anders formuliert.",
+      en: "Say what the answer should look like: length, level, example. “Once more” usually gets you the same kind of answer in different words."
+    },
+    prompt: {
+      de: "„Erklär mir das in höchstens fünf Sätzen, ohne Fachbegriffe, mit einem Beispiel aus dem Alltag.“",
+      en: "“Explain this in five sentences at most, without jargon, with an everyday example.”"
+    }
+  },
+  {
+    id: "pr-p-zutaten", thema: "prompten", form: "paare",
+    frage: {
+      de: "Zutaten für einen guten Prompt: Wofür ist welche gut?",
+      en: "Ingredients of a good prompt: what is each one good for?"
+    },
+    paare: [
+      [
+        { de: "Fehlertext", en: "Error text" },
+        { de: "zeigt genau, was schiefging", en: "shows exactly what went wrong" }
+      ],
+      ["Screenshot", { de: "zeigt, wie es gerade aussieht", en: "shows what it looks like now" }],
+      [
+        { de: "Grenze („nur diese Datei“)", en: "Boundary (“only this file”)" },
+        { de: "schützt, was schon funktioniert", en: "protects what already works" }
+      ],
+      [
+        { de: "Akzeptanzkriterien", en: "Acceptance criteria" },
+        { de: "sagen, wann es fertig ist", en: "say when it is done" }
+      ]
+    ],
+    erklaerung: {
+      de: "Du brauchst selten alle vier auf einmal. Frag dich vor dem Abschicken: Was sieht Claude nicht, was darf nicht kaputtgehen, und woran erkenne ich „fertig“?",
+      en: "You rarely need all four at once. Before sending, ask yourself: what can Claude not see, what must not break, and how will I recognize “done”?"
+    }
   }
 );

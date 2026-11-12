@@ -496,5 +496,55 @@
       de: "`add` und `commit` arbeiten nur auf deinem Rechner. `push` und `pull` gleichen mit GitHub ab.",
       en: "`add` and `commit` only work on your computer. `push` and `pull` sync with GitHub."
     }
+  },
+  {
+    id: "git-l-switch", thema: "git", form: "luecke",
+    code: { de: "git ___ neues-design", en: "git ___ new-design" },
+    frage: {
+      de: "Der Branch `neues-design` existiert schon, du bist auf `main`. Welches Wort bringt dich hinüber?",
+      en: "The branch `new-design` already exists and you are on `main`. Which word takes you over there?"
+    },
+    optionen: ["switch", "branch", "merge", "push"],
+    richtig: 0,
+    warum: {
+      1: {
+        de: "`git branch` legt Branches an oder listet sie auf. Gewechselt wird damit nicht.",
+        en: "`git branch` creates or lists branches. It does not switch."
+      },
+      2: {
+        de: "`merge` holt die Commits von `neues-design` in deinen aktuellen Branch. Du bleibst auf `main`.",
+        en: "`merge` brings the commits from `new-design` into your current branch. You stay on `main`."
+      },
+      3: {
+        de: "`push` lädt Commits hoch. Auf deinem Rechner wechselt dabei nichts.",
+        en: "`push` uploads commits. Nothing switches on your computer."
+      }
+    },
+    erklaerung: {
+      de: "Nach `git switch` zeigt dein Ordner die Dateien so, wie sie auf diesem Branch sind. In älteren Anleitungen steht für dasselbe `git checkout`.",
+      en: "After `git switch`, your folder shows the files as they are on that branch. Older guides use `git checkout` for the same thing."
+    },
+    prompt: {
+      de: "„Wechsle auf den Branch neues-design und sag mir danach, auf welchem Branch wir sind.“",
+      en: "“Switch to the branch new-design and then tell me which branch we are on.”"
+    }
+  },
+  {
+    id: "git-z-gitignore-punkt", thema: "git", form: "zeile",
+    code: "node_modules/\nenv\n*.log\ndist/",
+    codeLabel: ".gitignore",
+    frage: {
+      de: "`git status` zeigt deine `.env` weiterhin als neue Datei an. Welche Zeile der `.gitignore` ist falsch geschrieben?",
+      en: "`git status` still lists your `.env` as a new file. Which line of `.gitignore` is misspelled?"
+    },
+    zeile: 1,
+    erklaerung: {
+      de: "Der Punkt gehört zum Dateinamen. `env` ohne Punkt passt nur auf etwas, das genau so heißt, also bleibt `.env` ungeschützt.",
+      en: "The dot is part of the file name. `env` without the dot only matches something with exactly that name, so `.env` stays unprotected."
+    },
+    prompt: {
+      de: "„Prüf mit git status, ob die .env wirklich ignoriert wird, bevor wir committen.“",
+      en: "“Use git status to check that .env is really ignored before we commit.”"
+    }
   }
 );

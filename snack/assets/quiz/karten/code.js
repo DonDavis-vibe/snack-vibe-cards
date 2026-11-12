@@ -518,5 +518,107 @@
       de: "Hinter `Hallo ` fehlt das schließende Anführungszeichen. Dadurch gilt der Rest der Zeile als Text.",
       en: "The closing quote after `Hello ` is missing. That turns the rest of the line into text."
     }
+  },
+  {
+    id: "code-l-aufruf", thema: "code", form: "luecke",
+    code: {
+      de: "function heute() {\n  return \"Montag\";\n}\nconst tag = heute___;",
+      en: "function today() {\n  return \"Monday\";\n}\nconst day = today___;"
+    },
+    codeLabel: "Code",
+    frage: {
+      de: "Die Funktion soll jetzt laufen, damit in `tag` der Text „Montag“ landet. Welche Klammern fehlen?",
+      en: "The function should run now so that `day` ends up holding the text “Monday”. Which brackets are missing?"
+    },
+    optionen: ["()", "[]", "{}", "<>"],
+    richtig: 0,
+    warum: {
+      1: {
+        de: "Eckige Klammern holen ein Element aus einer Liste, z. B. `farben[0]`.",
+        en: "Square brackets fetch an item from a list, as in `colors[0]`."
+      },
+      2: {
+        de: "Geschweifte Klammern umschließen einen Block oder ein Objekt.",
+        en: "Curly braces wrap a block or an object."
+      },
+      3: {
+        de: "Spitze Klammern gehören zu HTML-Tags wie `<p>`.",
+        en: "Angle brackets belong to HTML tags like `<p>`."
+      }
+    },
+    erklaerung: {
+      de: "Runde Klammern hinter dem Namen heißen „jetzt ausführen“. Ohne sie steckt in `tag` die Funktion selbst und nicht ihr Ergebnis.",
+      en: "Parentheses after the name mean “run it now”. Without them, `day` holds the function itself and not its result."
+    }
+  },
+  {
+    id: "code-l-let", thema: "code", form: "luecke",
+    code: { de: "___ punkte = 0;\npunkte = punkte + 10;", en: "___ points = 0;\npoints = points + 10;" },
+    codeLabel: "Code",
+    frage: {
+      de: "Der Punktestand ändert sich in Zeile 2. Welches Wort muss deshalb am Anfang stehen?",
+      en: "The score changes in line 2. Which word has to come first because of that?"
+    },
+    optionen: ["let", "const", "function", "return"],
+    richtig: 0,
+    warum: {
+      1: {
+        de: "Bei `const` darf der Variable später nichts Neues zugewiesen werden. Zeile 2 würde mit einem Fehler abbrechen.",
+        en: "With `const`, nothing new may be assigned to the variable later. Line 2 would stop with an error."
+      },
+      2: {
+        de: "`function` legt eine Funktion an, also einen Arbeitsschritt, keinen Wert.",
+        en: "`function` creates a function, a piece of work, not a value."
+      },
+      3: {
+        de: "`return` gibt am Ende einer Funktion ein Ergebnis zurück.",
+        en: "`return` hands back a result at the end of a function."
+      }
+    },
+    erklaerung: {
+      de: "`let` erlaubt, der Variable später einen neuen Wert zu geben, `const` nicht. Die Meldung „Assignment to constant variable“ heißt: Hier wurde ein `const` geändert.",
+      en: "`let` allows giving the variable a new value later, `const` does not. The message “Assignment to constant variable” means a `const` was changed here."
+    },
+    prompt: {
+      de: "„Nimm const für alles, was sich nicht ändert, und let nur dort, wo es nötig ist.“",
+      en: "“Use const for everything that does not change, and let only where it is needed.”"
+    }
+  },
+  {
+    id: "code-m-strings", thema: "code", form: "mehrfach",
+    frage: {
+      de: "Welche dieser Werte sind in JavaScript Text, also Strings?",
+      en: "Which of these values are text, that is strings, in JavaScript?"
+    },
+    optionen: {
+      de: ["`\"42\"`", "`'Hallo Welt'`", "`42`", "`true`", "`\"true\"`"],
+      en: ["`\"42\"`", "`'Hello world'`", "`42`", "`true`", "`\"true\"`"]
+    },
+    richtige: [0, 1, 4],
+    erklaerung: {
+      de: "Anführungszeichen machen jeden Inhalt zu Text, egal ob einfache oder doppelte. Ohne sie ist `42` eine Zahl und `true` ein Wahrheitswert.",
+      en: "Quotes turn any content into text, single or double. Without them, `42` is a number and `true` is a true/false value."
+    }
+  },
+  {
+    id: "code-z-zuweisung", thema: "code", form: "zeile",
+    code: {
+      de: "let rolle = \"gast\";\nif (rolle = \"admin\") {\n  zeige(\"Alles löschen\");\n}",
+      en: "let role = \"guest\";\nif (role = \"admin\") {\n  show(\"Delete everything\");\n}"
+    },
+    codeLabel: "Code",
+    frage: {
+      de: "Auch Gäste sehen den Knopf „Alles löschen“, der nur für Admins gedacht ist. Welche Zeile enthält den Fehler?",
+      en: "Guests also see the “Delete everything” button that is meant for admins only. Which line contains the mistake?"
+    },
+    zeile: 1,
+    erklaerung: {
+      de: "Mit einem einzelnen `=` wird `rolle` auf „admin“ gesetzt statt verglichen, dadurch gilt die Bedingung immer. Vergleichen heißt `===`.",
+      en: "A single `=` sets `role` to “admin” instead of comparing, so the condition is always true. Comparing is `===`."
+    },
+    prompt: {
+      de: "„Gäste sehen den Admin-Knopf. Prüf die Bedingung: Steht dort = statt ===?“",
+      en: "“Guests see the admin button. Check the condition: does it say = instead of ===?”"
+    }
   }
 );

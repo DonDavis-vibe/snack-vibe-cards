@@ -844,5 +844,87 @@
       de: "„Zeig beim Upload einen Fortschrittsbalken mit der Prozentzahl daneben.“",
       en: "“During the upload, show a progress bar with the percentage next to it.”"
     }
+  },
+  {
+    id: "gui-m-blockiert", thema: "gui", form: "mehrfach",
+    frage: {
+      de: "Welche davon blockieren den Rest der Seite, bis du reagierst?",
+      en: "Which of these block the rest of the page until you respond?"
+    },
+    optionen: {
+      de: ["Modal", "Toast", "Bestätigungsdialog „Wirklich löschen?“", "Tooltip"],
+      en: ["Modal", "Toast", "Confirmation dialog “Really delete?”", "Tooltip"]
+    },
+    richtige: [0, 2],
+    erklaerung: {
+      de: "Ein Bestätigungsdialog ist ein kleines Modal mit einer Frage. Blockieren lohnt sich nur vor einer echten Entscheidung, für eine kurze Info reicht ein Toast.",
+      en: "A confirmation dialog is a small modal with a question. Blocking is only worth it before a real decision, and for a short notice a toast is enough."
+    },
+    prompt: {
+      de: "„Die Erfolgsmeldung soll ein Toast sein, kein Modal. Sie darf niemanden aufhalten.“",
+      en: "“Make the success message a toast, not a modal. It must not hold anyone up.”"
+    }
+  },
+  {
+    id: "gui-m-genau-eins", thema: "gui", form: "mehrfach",
+    frage: {
+      de: "In den Einstellungen soll man genau eine von vier Sprachen wählen. Welche Elemente passen dafür?",
+      en: "In the settings, people should pick exactly one of four languages. Which elements fit?"
+    },
+    optionen: {
+      de: ["Radio Buttons", "Checkboxen", "Dropdown", "Toggle", "Slider"],
+      en: ["Radio buttons", "Checkboxes", "Dropdown", "Toggle", "Slider"]
+    },
+    richtige: [0, 2],
+    erklaerung: {
+      de: "Radio Buttons zeigen alle Möglichkeiten sofort, ein Dropdown spart Platz bei langen Listen. Checkboxen erlauben mehrere Haken, ein Toggle kennt nur An und Aus, ein Slider passt für Werte wie Lautstärke.",
+      en: "Radio buttons show every choice at once, a dropdown saves space for long lists. Checkboxes allow several ticks, a toggle only knows on and off, a slider is for values like volume."
+    },
+    prompt: {
+      de: "„Nimm für die Sprachauswahl ein Dropdown. Es soll immer genau eine Sprache gewählt sein.“",
+      en: "“Use a dropdown for the language choice. Exactly one language should always be selected.”"
+    }
+  },
+  {
+    id: "gui-p-bausteine", thema: "gui", form: "paare",
+    frage: {
+      de: "Vier Bausteine, die auf fast jeder Seite vorkommen. Was ist was?",
+      en: "Four building blocks found on almost every page. Which is which?"
+    },
+    paare: [
+      ["Card", { de: "Kasten, der Zusammengehöriges bündelt", en: "box that groups related content" }],
+      ["Avatar", { de: "Profilbild eines Nutzers", en: "a user's profile picture" }],
+      ["Thumbnail", { de: "kleines Vorschaubild", en: "small preview image" }],
+      ["Banner", { de: "Hinweis-Streifen über die ganze Breite", en: "notice strip across the full width" }]
+    ],
+    erklaerung: {
+      de: "Mit diesen Wörtern weiß Claude sofort, welchen Teil der Seite du meinst. Eine Card enthält oft selbst ein Thumbnail oder einen Avatar.",
+      en: "With these words Claude knows right away which part of the page you mean. A card often contains a thumbnail or an avatar itself."
+    },
+    prompt: {
+      de: "„Zeig jedes Projekt als Card mit Thumbnail, Titel und dem Avatar des Besitzers.“",
+      en: "“Show each project as a card with a thumbnail, the title and the owner's avatar.”"
+    }
+  },
+  {
+    id: "gui-p-formular", thema: "gui", form: "paare",
+    frage: {
+      de: "Vier Helfer für Formulare. Welcher ist wofür da?",
+      en: "Four helpers for forms. What is each one for?"
+    },
+    paare: [
+      ["Textarea", { de: "Feld für mehrzeiligen Text", en: "field for multi-line text" }],
+      ["Date Picker", { de: "Kalender zum Auswählen eines Datums", en: "calendar for picking a date" }],
+      ["Autocomplete", { de: "schlägt beim Tippen Treffer vor", en: "suggests matches while you type" }],
+      ["Dropzone", { de: "Fläche zum Hineinziehen von Dateien", en: "area to drag files onto" }]
+    ],
+    erklaerung: {
+      de: "Ein normales Eingabefeld (Input) hat nur eine Zeile, für längere Texte brauchst du eine Textarea. Date Picker und Autocomplete ersparen Tippfehler, weil man auswählt statt tippt.",
+      en: "A normal input field has only one line, so longer text needs a textarea. Date picker and autocomplete prevent typos because people choose instead of typing."
+    },
+    prompt: {
+      de: "„Mach aus dem Kommentarfeld eine Textarea und gib dem Datum einen Date Picker.“",
+      en: "“Turn the comment field into a textarea and give the date a date picker.”"
+    }
   }
 );

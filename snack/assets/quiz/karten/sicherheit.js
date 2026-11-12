@@ -466,5 +466,129 @@
       de: "Schlüssel und Passwörter sind wie Haustürschlüssel: Wer sie hat, kommt rein. Fehlermeldungen darfst du teilen, schau aber vorher, ob ein Schlüssel drinsteht.",
       en: "Keys and passwords are like house keys: whoever has them gets in. Error messages are fine to share, but check first that no key is in them."
     }
+  },
+  {
+    id: "sec-l-process-env", thema: "sicherheit", form: "luecke",
+    code: "const key = ___.WEATHER_KEY;",
+    codeLabel: "server.js",
+    frage: {
+      de: "Der Server soll den Key aus der `.env` lesen, statt ihn fest im Code zu haben. Was fehlt?",
+      en: "The server should read the key from `.env` instead of having it hard-coded. What is missing?"
+    },
+    optionen: ["process.env", ".env", "localStorage", "console"],
+    richtig: 0,
+    warum: {
+      1: {
+        de: "`.env` ist nur der Dateiname. Im Code heißt der Zugriff `process.env`.",
+        en: "`.env` is only the file name. In code, the access is called `process.env`."
+      },
+      2: {
+        de: "`localStorage` ist ein Speicher im Browser, nicht auf dem Server. Geheimes gehört dort nie hin.",
+        en: "`localStorage` is storage in the browser, not on the server. Secrets never belong there."
+      },
+      3: {
+        de: "`console` gibt Text aus. Einstellungen liest es nicht.",
+        en: "`console` prints text. It does not read settings."
+      }
+    },
+    erklaerung: {
+      de: "In Node.js stehen die Werte aus der `.env` nach dem Laden unter `process.env`. Im Code steht so nur der Name, nie der Key selbst.",
+      en: "In Node.js, the values from `.env` are available under `process.env` once the file is loaded. The code then holds only the name, never the key itself."
+    },
+    prompt: {
+      de: "„Lies den Key über process.env aus der .env. Er darf nirgends fest im Code stehen.“",
+      en: "“Read the key from .env via process.env. It must not be hard-coded anywhere.”"
+    }
+  },
+  {
+    id: "sec-r-key-leck", thema: "sicherheit", form: "reihenfolge",
+    frage: {
+      de: "Dein API-Key stand öffentlich auf GitHub. Was tust du der Reihe nach, das Dringendste zuerst?",
+      en: "Your API key was public on GitHub. What do you do in order, most urgent first?"
+    },
+    schritte: {
+      de: [
+        "Alten Key beim Anbieter löschen",
+        "Neuen Key erstellen",
+        "Neuen Key in die `.env` eintragen",
+        "Testen, ob die App mit dem neuen Key läuft"
+      ],
+      en: [
+        "Delete the old key at the provider",
+        "Create a new key",
+        "Put the new key into `.env`",
+        "Test that the app runs with the new key"
+      ]
+    },
+    erklaerung: {
+      de: "Löschen kommt zuerst, weil Bots GitHub ständig nach Keys absuchen. Den Key nur aus der Datei zu nehmen reicht nicht, er steckt weiter im Verlauf.",
+      en: "Deleting comes first because bots scan GitHub for keys all the time. Just removing the key from the file is not enough, it stays in the history."
+    },
+    prompt: {
+      de: "„Der Key war in einem Commit, ich habe ihn ersetzt. Prüf, ob .env in der .gitignore steht.“",
+      en: "“The key was in a commit and I replaced it. Check that .env is in .gitignore.”"
+    }
+  },
+  {
+    id: "sec-z-key-im-code", thema: "sicherheit", form: "zeile",
+    code: {
+      de: "const config = {\n  stadt: \"Berlin\",\n  sprache: \"de\",\n  apiKey: \"sk-FAKE-0000-0000-0000\",\n  port: 3000\n};",
+      en: "const config = {\n  city: \"Berlin\",\n  language: \"en\",\n  apiKey: \"sk-FAKE-0000-0000-0000\",\n  port: 3000\n};"
+    },
+    codeLabel: "config.js",
+    frage: {
+      de: "Diese Datei soll gleich committet werden. Welche Zeile darf so nicht auf GitHub landen?",
+      en: "This file is about to be committed. Which line must not end up on GitHub like this?"
+    },
+    zeile: 3,
+    erklaerung: {
+      de: "Ein Key im Code wandert mit dem Commit ins Repo und bleibt im Verlauf, auch wenn du ihn später löschst. Er gehört in die `.env`, im Code steht dann nur `process.env.API_KEY`.",
+      en: "A key in the code goes into the repo with the commit and stays in the history even if you delete it later. It belongs in `.env`, and the code then only says `process.env.API_KEY`."
+    },
+    prompt: {
+      de: "„Prüf vor dem Commit, ob irgendwo ein Key oder Passwort fest im Code steht.“",
+      en: "“Before the commit, check whether a key or password is hard-coded anywhere.”"
+    }
+  },
+  {
+    id: "sec-p-zugang", thema: "sicherheit", form: "paare",
+    frage: { de: "Begriffe rund um Zugänge: Was gehört zusammen?", en: "Terms about access: what goes together?" },
+    paare: [
+      [
+        { de: "API-Key", en: "API key" },
+        { de: "Zugangscode für dein Programm", en: "access code for your program" }
+      ],
+      ["2FA", { de: "zweiter Code zusätzlich zum Passwort", en: "second code besides the password" }],
+      [
+        { de: "Passwortmanager", en: "Password manager" },
+        { de: "merkt sich alle deine Passwörter", en: "remembers all your passwords" }
+      ],
+      ["Phishing", { de: "gefälschte Mail will dein Passwort", en: "fake email wants your password" }]
+    ],
+    erklaerung: {
+      de: "Phishing ist der Ausreißer: ein Angriff, der auf dich zielt statt auf die Technik. Mit 2FA kommt ein Dieb selbst mit deinem Passwort nicht ins Konto.",
+      en: "Phishing is the odd one out: an attack aimed at you, not at the technology. With 2FA, a thief cannot get into your account even with your password."
+    }
+  },
+  {
+    id: "sec-p-riskant", thema: "sicherheit", form: "paare",
+    frage: {
+      de: "Claude schlägt einen dieser Befehle vor. Welches Risiko gehört zu welchem?",
+      en: "Claude suggests one of these commands. Which risk goes with which?"
+    },
+    paare: [
+      ["cat .env", { de: "zeigt deine Keys im Chat", en: "shows your keys in the chat" }],
+      ["curl … | bash", { de: "startet ein fremdes Skript ungesehen", en: "runs a stranger's script unseen" }],
+      ["rm -rf ~/", { de: "löscht deinen ganzen Home-Ordner", en: "deletes your whole home folder" }],
+      ["git push --force", { de: "überschreibt den Stand auf GitHub", en: "overwrites what is on GitHub" }]
+    ],
+    erklaerung: {
+      de: "Solche Befehle sind der Grund, warum Claude vorher fragt. Lies die Nachfrage wirklich, und frag im Zweifel, was genau passiert.",
+      en: "Commands like these are why Claude asks first. Actually read the permission prompt, and when in doubt ask what exactly will happen."
+    },
+    prompt: {
+      de: "„Bevor du das ausführst: Was genau macht der Befehl, und was kann dabei verloren gehen?“",
+      en: "“Before you run this: what exactly does the command do, and what could be lost?”"
+    }
   }
 );

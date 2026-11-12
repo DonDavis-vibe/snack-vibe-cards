@@ -423,5 +423,129 @@
       de: "Zwei Punkte stehen für den Ordner darüber. `cd ..` geht eine Ebene nach oben, `cd ../..` zwei.",
       en: "Two dots stand for the folder above. `cd ..` goes up one level, `cd ../..` two."
     }
+  },
+  {
+    id: "term-l-und-dann", thema: "terminal", form: "luecke",
+    code: "npm test ___ git push",
+    frage: {
+      de: "Erst laufen die Tests. Hochgeladen werden soll nur, wenn sie bestanden sind. Was gehört zwischen die zwei Befehle?",
+      en: "The tests run first. The upload should only happen if they pass. What goes between the two commands?"
+    },
+    optionen: ["&&", "|", "||", ";"],
+    richtig: 0,
+    warum: {
+      1: {
+        de: "Der einzelne Strich (Pipe) reicht die Ausgabe des ersten Befehls an den zweiten weiter.",
+        en: "The single bar (pipe) passes the output of the first command on to the second."
+      },
+      2: {
+        de: "`||` ist das Gegenteil: Der zweite Befehl läuft nur, wenn der erste scheitert.",
+        en: "`||` is the opposite: the second command only runs if the first one fails."
+      },
+      3: {
+        de: "Nach `;` läuft der zweite Befehl immer, auch wenn der erste gescheitert ist.",
+        en: "After `;` the second command always runs, even if the first one failed."
+      }
+    },
+    erklaerung: {
+      de: "`&&` heißt „und dann, aber nur bei Erfolg“. Scheitert der erste Befehl, startet der zweite gar nicht erst.",
+      en: "`&&` means “and then, but only on success”. If the first command fails, the second never starts."
+    }
+  },
+  {
+    id: "term-l-version", thema: "terminal", form: "luecke",
+    code: "node ___",
+    frage: {
+      de: "Claude fragt, welche Version von Node auf deinem Rechner installiert ist. Was hängst du an den Befehl an?",
+      en: "Claude asks which version of Node is installed on your computer. What do you add to the command?"
+    },
+    optionen: ["--version", "--help", "--update", "install"],
+    richtig: 0,
+    warum: {
+      1: {
+        de: "`--help` listet auf, was du alles anhängen kannst. Die installierte Version zeigt es nicht.",
+        en: "`--help` lists everything you can add. It does not show the installed version."
+      },
+      2: { de: "Einen Zusatz `--update` kennt Node nicht.", en: "Node has no `--update` option." },
+      3: {
+        de: "`node install` sucht eine Datei namens `install`, um sie auszuführen.",
+        en: "`node install` looks for a file named `install` to run it."
+      }
+    },
+    erklaerung: {
+      de: "Kommt eine Nummer wie `v22.11.0` zurück, ist Node installiert. `--version` klappt bei fast jedem Terminal-Programm, zum Beispiel auch bei `git` und `npm`.",
+      en: "If a number like `v22.11.0` comes back, Node is installed. `--version` works for almost every terminal program, for example `git` and `npm` too."
+    },
+    prompt: {
+      de: "„Prüf mit --version, ob Node und Git installiert sind.“",
+      en: "“Use --version to check whether Node and Git are installed.”"
+    }
+  },
+  {
+    id: "term-r-projekt-start", thema: "terminal", form: "reihenfolge",
+    frage: {
+      de: "Du hast ein Projekt frisch heruntergeladen und willst es zum ersten Mal starten. Was kommt wann?",
+      en: "You just downloaded a project and want to start it for the first time. What comes when?"
+    },
+    schritte: {
+      de: [
+        "`cd quiz`: in den Projektordner wechseln",
+        "`npm install`: Pakete herunterladen",
+        "`npm run dev`: Server starten",
+        "Die angezeigte Adresse im Browser öffnen"
+      ],
+      en: [
+        "`cd quiz`: go into the project folder",
+        "`npm install`: download the packages",
+        "`npm run dev`: start the server",
+        "Open the address it shows in the browser"
+      ]
+    },
+    erklaerung: {
+      de: "Ohne `cd` landet alles im falschen Ordner, ohne `npm install` fehlen dem Server die Pakete. `npm install` brauchst du nur beim ersten Mal und wenn neue Pakete dazukommen.",
+      en: "Without `cd` everything happens in the wrong folder, without `npm install` the server is missing its packages. You only need `npm install` the first time and when new packages are added."
+    },
+    prompt: {
+      de: "„Installier die Pakete, starte den Dev-Server und sag mir die Adresse.“",
+      en: "“Install the packages, start the dev server and tell me the address.”"
+    }
+  },
+  {
+    id: "term-z-falscher-ordner", thema: "terminal", form: "zeile",
+    code: {
+      de: "mkdir quiz\ncd quiz\nmkdir bilder\ncd quiz/bilder\nls",
+      en: "mkdir quiz\ncd quiz\nmkdir images\ncd quiz/images\nls"
+    },
+    codeLabel: "Terminal",
+    frage: {
+      de: "Du tippst diese Befehle nacheinander ein. Bei einem meldet das Terminal, dass es den Ordner nicht gibt. Bei welchem?",
+      en: "You type these commands one after another. One of them makes the terminal say the folder does not exist. Which one?"
+    },
+    zeile: 3,
+    erklaerung: {
+      de: "Nach `cd quiz` bist du schon in `quiz`. Von dort reicht `cd bilder`, denn ein Pfad ohne `/` am Anfang gilt ab dem Ordner, in dem du gerade bist.",
+      en: "After `cd quiz` you are already inside `quiz`. From there `cd images` is enough, because a path without a leading `/` starts from the folder you are in."
+    },
+    prompt: {
+      de: "„Das Terminal findet den Ordner nicht. Prüf mit pwd, wo wir gerade sind.“",
+      en: "“The terminal cannot find the folder. Check with pwd where we are right now.”"
+    }
+  },
+  {
+    id: "term-p-befehle", thema: "terminal", form: "paare",
+    frage: {
+      de: "Vier kurze Befehle, die Claude oft benutzt. Was gehört zusammen?",
+      en: "Four short commands Claude uses a lot. What goes together?"
+    },
+    paare: [
+      ["mkdir", { de: "legt einen neuen Ordner an", en: "creates a new folder" }],
+      ["cp", { de: "kopiert eine Datei", en: "copies a file" }],
+      ["cat", { de: "zeigt den Inhalt einer Datei", en: "shows what is in a file" }],
+      ["touch", { de: "legt eine leere Datei an", en: "creates an empty file" }]
+    ],
+    erklaerung: {
+      de: "`mkdir` kommt von „make directory“, `cp` von „copy“. Nur `cat` schaut bloß hinein, die anderen drei legen etwas Neues an.",
+      en: "`mkdir` comes from “make directory”, `cp` from “copy”. Only `cat` just looks inside, the other three create something new."
+    }
   }
 );
